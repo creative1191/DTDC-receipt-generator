@@ -1,0 +1,28 @@
+name: Build DTDC EXE
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install reportlab python-barcode Pillow pyinstaller
+      - name: Build Windows EXE Only (Fixed generator module)
+        run: |
+          pyinstaller --onefile --windowed --name DTDC_Bill_Generator --add-data "assets;assets" --add-data "generator;generator" --collect-all barcode --hidden-import=barcode --hidden-import=barcode.writer --hidden-import=generator --hidden-import=generator.dtdc_generator --hidden-import=reportlab --hidden-import=PIL app_gui.py --clean -y
+      - name: Upload Windows EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: DTDC_Bill_Generator-Windows-EXE
+          path: dist/DTDC_Bill_Generator.exe

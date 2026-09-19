@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<style>
+  @page {{ size: A4 landscape; margin: 8mm; }}
+  *{{box-sizing:border-box;margin:0;padding:0}} body{{font-family:Arial,Helvetica,sans-serif;background:#fff}}
+  .sheet{{width:1080px;border:2.5px solid #000;margin:0 auto;background:#fff}}
+  .top{{display:grid;grid-template-columns:41% 31.5% 27.5%;grid-template-rows:52px 42px 38px}}
+  .logo-cell{{grid-row:1/4;grid-column:1/2;border-right:2px solid #000;border-bottom:2px solid #000;padding:6px 10px;display:flex;gap:10px;align-items:center}}
+  .logo-img{{width:180px;height:auto;object-fit:contain}} .company{{font-size:11.5px;line-height:13px}}
+  .c{{border-right:2px solid #000;border-bottom:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:12px}} .c-right{{border-bottom:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:12px}}
+  .c-product{{grid-row:2/4;grid-column:2/3;border-right:2px solid #000;border-bottom:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}}
+  .mid{{display:grid;grid-template-columns:41% 59%}} .mid-left,.mid-right{{border-bottom:2px solid #000;padding:5px 7px;font-size:11.2px;line-height:14px}} .mid-left{{border-right:2px solid #000}}
+  .bottom{{display:grid;grid-template-columns:32% 26% 42%}} .b-left{{border-right:2px solid #000;display:grid;grid-template-rows:42px 60px 148px 42px 32px}} .b-mid{{border-right:2px solid #000;display:grid;grid-template-rows:30px 24px 22px 30px 22px 22px 174px}} .b-right{{display:grid;grid-template-rows:174px 114px 36px}}
+  .bl,.bm{{border-bottom:2px solid #000;padding:3px 6px;font-size:11px;line-height:13px}} .bm-last{{padding:6px;line-height:14px}}
+  .br-top{{border-bottom:2px solid #000;text-align:center;padding:6px}} .br-mid{{border-bottom:2px solid #000;display:grid;grid-template-columns:58% 18% 24%;grid-template-rows:56px 56px}}
+  .risk{{grid-row:1/3;grid-column:1/2;border-right:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900}}
+  .own-l{{grid-row:1/2;grid-column:2/3;border-right:2px solid #000;border-bottom:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:12px}} .own-c{{grid-row:1/2;grid-column:3/4;border-bottom:2px solid #000;display:flex;align-items:center;justify-content:center}}
+  .car-l{{grid-row:2/3;grid-column:2/3;border-right:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:12px}} .car-c{{grid-row:2/3;grid-column:3/4;display:flex;align-items:center;justify-content:center}}
+  .chk{{width:28px;height:24px;border:2px solid #000;border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:bold}}
+  .barcode{{width:90%;height:70px;object-fit:contain;margin:6px auto 2px;display:block}} .awb{{font-size:13px;margin-top:6px}} .mode{{font-size:18px}}
+  .footer{{border-top:2px solid #000;display:flex;justify-content:space-between;padding:3px 8px;font-size:9.5px;font-weight:700}} .charges-box{{border:2px solid #000;display:inline-block;padding:5px 12px;font-size:13px;font-weight:bold;background:#fff;margin-top:6px}}
+</style></head><body>
+<div class="sheet">
+  <div class="top"><div class="logo-cell">{logo_html}<div class="company">DTDC Express Limited<br>Regd. Office No. 3, Victoria Road<br>Bengaluru - 560047</div></div>
+  <div class="c">Origin: <b style="margin-left:4px;">{origin}</b></div><div class="c-right">Dest: <b style="margin-left:4px;">{dest}</b></div>
+  <div class="c-product">PRODUCT: {product}</div><div class="c-right">Type: <b style="margin-left:4px;">{type}</b></div><div class="c-right">Date: {date}</div></div>
+  <div class="mid"><div class="mid-left">Consignor's Name: <b>{consignor_name}</b><br>Consignor's Address: {consignor_address}<br>GSTIN No.:<br>Phone: <b>{consignor_phone}</b> &nbsp; Email :</div>
+  <div class="mid-right">Customer Ref No:<br>Consignee's Name: <b>{consignee_name}</b><br>Consignee's Address: <b>{consignee_address}</b><br>GSTIN No.:<br>Phone: <b>{consignee_phone}</b> &nbsp; Email :<br><span class="charges-box">Courier Charges: ₹ {courier_charges}</span></div></div>
+  <div class="bottom"><div class="b-left"><div class="bl">Content Specification : {content_spec}</div><div class="bl">Paperwork Enclosed :</div>
+  <div class="bl">I/We declare that this consignment does not contain personal mail, cash, jewellery, contraband, illegal drugs, any prohibited items and commodities which can cause safety hazards while transporting
+  <div style="text-align:center;margin-top:24px;"><span style="border-bottom:1px solid #000;font-weight:bold;">Sender's Signature & Seal</span><br><span style="font-size:8.5px;">I have read and understood terms & conditions of carriage mentioned on website www.dtdc.in, and I agree to the same.</span></div></div><div class="bl"></div>
+  <div class="bl" style="display:flex;gap:8px;font-size:9.5px;align-items:center;justify-content:center;">https://www.dtdc.in | customersupport@dtdc.com | +91-9606911811</div></div>
+  <div class="b-mid"><div class="bm">Declared Value: <b>{declared_value}</b></div><div class="bm">No Of Pieces: <b>{pieces}</b></div><div class="bm">Actual Weight: <b>{actual_weight}</b></div><div class="bm">Ewaybill Number:</div><div class="bm">Dim: <b>{dim}</b></div><div class="bm">Charged weight: <b>{charged_weight}</b></div>
+  <div class="bm bm-last">Name : <b>{sender_name}</b><br>Address: {sender_addr}<br>Phone : <b>{sender_phone}</b></div></div>
+  <div class="b-right"><div class="br-top"><div class="mode">Mode: <b>{mode}</b></div><img class="barcode" src="data:image/png;base64,{barcode_b64}"><div class="awb">AWB No: <b>{awb}</b></div></div>
+  <div class="br-mid"><div class="risk">Risk Surcharge</div><div class="own-l">Owner</div><div class="own-c"><div class="chk">✓</div></div><div class="car-l">Carrier</div><div class="car-c"><div class="chk"></div></div></div><div class="bl">Remark :</div></div></div>
+  <div class="footer"><span>THIS DOCUMENT IS NOT A TAX INVOICE. WEIGHT CAPTURED BY DTDC WILL BE USED FOR INVOICE GENERATION.</span><span>Sender's Copy</span></div>
+</div></body></html>
